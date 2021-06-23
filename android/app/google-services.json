@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "469422651668",
+    "project_id": "alisverissepeti-c0639",
+    "storage_bucket": "alisverissepeti-c0639.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:469422651668:android:ad1e25d33f5dd7d05c6a01",
+        "android_client_info": {
+          "package_name": "com.example.alisverissepeti"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "469422651668-7up738u5k360vav8tc5432v1v9am8q4a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbU6agKRdvC6VRZABoZetY1GWniTxOhHw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "469422651668-7up738u5k360vav8tc5432v1v9am8q4a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

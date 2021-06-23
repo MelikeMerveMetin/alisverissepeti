@@ -15,8 +15,10 @@ class _beyazesyaState extends State<beyazesya> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:
-          AppBar(backgroundColor: Colors.purple, title: Text(widget.kategori)),
+      appBar: AppBar(
+        backgroundColor: Colors.purple,
+        title: Text(widget.kategori),
+      ),
       body: buildList(beyazEsyaUrunleri),
     );
   }

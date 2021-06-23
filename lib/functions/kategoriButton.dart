@@ -6,49 +6,49 @@ import '../pages/kozmetik.dart';
 import '../pages/mutfakGerecleri.dart';
 import '../pages/teknoloji.dart';
 
-Widget buildButton(BuildContext context, String i) => Padding(
+Widget buildButton(context,String kategori)=> Padding(
       padding: const EdgeInsets.all(10.0),
       child: SizedBox(
         width: 200,
         height: 50,
         child: RaisedButton(
-          color: Colors.purple,
+         color: Colors.purple,
           elevation: 10,
           child: Text(
-            i,
+           kategori,
             style: TextStyle(color: Colors.white),
           ),
           onPressed: () {
-            if (i == "TEKNOLOJİ") {
+            if (kategori == "TEKNOLOJİ") {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => teknoloji(kategori: i)),
+                MaterialPageRoute(builder: (context) => teknoloji(kategori: kategori)),
               );
-            } else if (i == "GİYİM") {
+            } else if (kategori == "GİYİM") {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => giyim(kategori: i)),
+                MaterialPageRoute(builder: (context) => giyim(kategori: kategori)),
               );
-            } else if (i == "MUTFAK GEREÇLERİ") {
+            } else if (kategori == "MUTFAK GEREÇLERİ") {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => mutfakgerecleri(kategori: i)),
+                    builder: (context) => mutfakgerecleri(kategori: kategori)),
               );
-            } else if (i == "KOZMETİK") {
+            } else if (kategori == "KOZMETİK") {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => kozmetik(kategori: i)),
+                MaterialPageRoute(builder: (context) => kozmetik(kategori: kategori)),
               );
-            } else if (i == "EV TEKSTİL") {
+            } else if (kategori == "EV TEKSTİL") {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => evtekstil(kategori: i)),
+                MaterialPageRoute(builder: (context) => evtekstil(kategori: kategori)),
               );
-            } else if (i == "BEYAZ EŞYA") {
+            } else if (kategori == "BEYAZ EŞYA") {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => beyazesya(kategori: i)),
+                MaterialPageRoute(builder: (context) => beyazesya(kategori: kategori)),
               );
             }
           },

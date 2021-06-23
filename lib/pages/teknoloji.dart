@@ -1,6 +1,6 @@
-import 'package:alisverissepeti/functions/listeolusturma.dart';
 import 'package:flutter/material.dart';
-import '../urunListeleri.dart';
+import 'package:alisverissepeti/functions/listeolusturma.dart';
+import 'package:alisverissepeti/urunListeleri.dart';
 
 class teknoloji extends StatefulWidget {
   final kategori;

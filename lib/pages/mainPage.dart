@@ -1,24 +1,27 @@
-import 'package:alisverissepeti/pages/sepetim.dart';
 import 'package:flutter/material.dart';
 import '../functions/kategoriButton.dart';
 
 class mainPage extends StatefulWidget {
-  final kullaniciadi;
-
-  const mainPage({Key key, @required this.kullaniciadi}) : super(key: key);
-
   @override
   _mainPageState createState() => _mainPageState();
 }
 
 class _mainPageState extends State<mainPage> {
   int sekme = 1;
+  final List<String> kategoriler = [
+    "TEKNOLOJİ,teknoloji()",
+    "GİYİM,giyim()",
+    "MUTFAK GEREÇLERİ",
+    "KOZMETİK",
+    "EV TEKSTİL",
+    "BEYAZ EŞYA"
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("HOŞGELDİN " + widget.kullaniciadi),
+        title: Text("HOŞ GELDİNİZ"),
         backgroundColor: Colors.purple,
         actions: <Widget>[
           IconButton(
@@ -34,22 +37,22 @@ class _mainPageState extends State<mainPage> {
       body: Padding(
           padding: const EdgeInsets.fromLTRB(12, 15, 20, 20),
           child: Center(
-            child: Column(
-              children: [
+            child: SingleChildScrollView(
+              child: Column(children: [
                 buildButton(context, "TEKNOLOJİ"),
                 buildButton(context, "GİYİM"),
                 buildButton(context, "MUTFAK GEREÇLERİ"),
                 buildButton(context, "KOZMETİK"),
                 buildButton(context, "EV TEKSTİL"),
                 buildButton(context, "BEYAZ EŞYA"),
-              ],
+              ]),
             ),
           )),
       bottomNavigationBar: BottomNavigationBar(
           items: [
             BottomNavigationBarItem(
-              icon: Icon(Icons.info),
-              title: Text("Hakkında"),
+              icon: Icon(Icons.exit_to_app),
+              title: Text("Çıkış"),
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
@@ -67,7 +70,7 @@ class _mainPageState extends State<mainPage> {
                 setState(() {
                   sekme = 0;
                 });
-                Navigator.pushNamed(context, "/hakkindaPage");
+                Navigator.pushNamed(context, "/");
                 break;
               case 1:
                 setState(() {
@@ -80,6 +83,7 @@ class _mainPageState extends State<mainPage> {
                   sekme = 2;
                 });
                 Navigator.pushNamed(context, "/sepetim");
+
                 break;
             }
           }),
