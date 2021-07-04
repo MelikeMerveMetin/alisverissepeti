@@ -296,7 +296,7 @@ class kayitPageState extends State<kayitPage> {
                       cinsiyet="Erkek";
                     }
                     ScaffoldMessenger.of(context).showSnackBar(new SnackBar(content:new Text("Kayıt Olundu")));
-                    _auth.createPerson(kullanici_adi, parola, kullanicimaili,cinsiyet).then((user){
+                    _auth.createPerson(kullanici_adi, parola, kullanicimaili, cinsiyet).then((user){
                       return Navigator.push(
                         context,
                         MaterialPageRoute(

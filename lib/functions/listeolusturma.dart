@@ -37,6 +37,7 @@ Widget buildList(List<Urun> listeAdi) {
               child: Text("SEPETE EKLE"),
               color: Colors.white,
               onPressed: () {
+
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => sepetim()),

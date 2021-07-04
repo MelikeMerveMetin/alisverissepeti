@@ -1,6 +1,7 @@
 import 'package:alisverissepeti/grafik_olustur.dart';
 import 'package:alisverissepeti/pages/detayPage.dart';
 import 'package:alisverissepeti/pages/mainPage.dart';
+import 'package:alisverissepeti/pages/notPage.dart';
 import 'package:alisverissepeti/pages/sepetim.dart';
 import 'package:alisverissepeti/views/calisan_view.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -54,6 +55,7 @@ class MyApp extends StatelessWidget {
         "/detayPage": (context) => detayPage(),
         "/calisan_view": (context) => CalisanView(),
         "/mainPage":(context)=>mainPage(),
+        "/notPage":(context)=>notPage(),
         "/LineChart":(context)=>LineChartSample(),
       },
     );

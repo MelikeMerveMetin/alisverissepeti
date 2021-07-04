@@ -9,7 +9,25 @@ class loginPage extends StatefulWidget {
   loginPageState createState() => loginPageState();
 }
 
-class loginPageState extends State<loginPage> {
+class loginPageState extends State<loginPage>
+    with SingleTickerProviderStateMixin {
+  AnimationController _controller;
+
+  @override
+  void initState() {
+    _controller =
+        AnimationController(vsync: this, duration: Duration(seconds: 2));
+    _controller.repeat();
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   String kullanici_maili = "";
   bool sifreGorunurluk = true;
   String parola = "";
@@ -28,78 +46,100 @@ class loginPageState extends State<loginPage> {
   }
 
   Widget buildBody() {
-    return Form(
-      key: _formKey,
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(15, 30, 15, 0),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              TextFormField(
-                decoration: InputDecoration(
-                  labelStyle: TextStyle(color: Colors.purple),
-                  focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.purple)),
-                  labelText: "Kullanıcı Maili",
-                  prefixIcon: Icon(Icons.mail, color: Colors.black),
-                  border: OutlineInputBorder(),
+    return SingleChildScrollView(
+      child: Form(
+        key: _formKey,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(15, 30, 15, 0),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                TextFormField(
+                  decoration: InputDecoration(
+                    labelStyle: TextStyle(color: Colors.purple),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.purple)),
+                    labelText: "Kullanıcı Maili",
+                    prefixIcon: Icon(Icons.mail, color: Colors.black),
+                    border: OutlineInputBorder(),
+                  ),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      //value nullsa
+                      return "LÜTFEN MAİL ADRESİNİZİ GİRİNİZ";
+                    } else {
+                      return null;
+                    }
+                  },
+                  onSaved: (value) {
+                    kullanici_maili = value;
+                  },
                 ),
-                validator: (value) {
-                  if (value.isEmpty) {
-                    //value nullsa
-                    return "LÜTFEN MAİL ADRESİNİZİ GİRİNİZ";
-                  } else {
-                    return null;
-                  }
-                },
-                onSaved: (value) {
-                  kullanici_maili = value;
-                },
-              ),
-              SizedBox(height: 10.0),
-              TextFormField(
-                obscureText: sifreGorunurluk ? true : false,
-                decoration: InputDecoration(
-                  labelStyle: TextStyle(color: Colors.purple),
-                  focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.purple)),
-                  labelText: "Parola",
-                  prefixIcon: Icon(Icons.vpn_key_rounded, color: Colors.black),
-                  suffixIcon: InkWell(
-                      //ıcona tıklama özelliği veriyor
-                      onTap: () {
-                        if (sifreGorunurluk == true) {
-                          setState(() {
-                            //tıkladığımızı anlasın diye
-                            sifreGorunurluk = false;
-                          });
-                        } else {
-                          setState(() {
-                            sifreGorunurluk = true;
-                          });
-                        }
-                      },
-                      child: Icon(Icons.remove_red_eye, color: Colors.black)),
-                  border: OutlineInputBorder(),
+                SizedBox(height: 10.0),
+                TextFormField(
+                  obscureText: sifreGorunurluk ? true : false,
+                  decoration: InputDecoration(
+                    labelStyle: TextStyle(color: Colors.purple),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.purple)),
+                    labelText: "Parola",
+                    prefixIcon: Icon(Icons.vpn_key_rounded, color: Colors.black),
+                    suffixIcon: InkWell(
+                        //ıcona tıklama özelliği veriyor
+                        onTap: () {
+                          if (sifreGorunurluk == true) {
+                            setState(() {
+                              //tıkladığımızı anlasın diye
+                              sifreGorunurluk = false;
+                            });
+                          } else {
+                            setState(() {
+                              sifreGorunurluk = true;
+                            });
+                          }
+                        },
+                        child: Icon(Icons.remove_red_eye, color: Colors.black)),
+                    border: OutlineInputBorder(),
+                  ),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      //value nullsa
+                      return "LÜTFEN PAROLANIZI GİRİNİZ";
+                    } else {
+                      return null;
+                    }
+                  },
+                  onSaved: (value) {
+                    parola = value;
+                  },
                 ),
-                validator: (value) {
-                  if (value.isEmpty) {
-                    //value nullsa
-                    return "LÜTFEN PAROLANIZI GİRİNİZ";
-                  } else {
-                    return null;
-                  }
-                },
-                onSaved: (value) {
-                  parola = value;
-                },
-              ),
-              SizedBox(height: 10.0),
-              buildButton(),
-              kayitButton(context),
-              buildHakkinda(context),
-            ],
+                SizedBox(height: 10.0),
+                buildButton(),
+                kayitButton(context),
+                buildHakkinda(context),
+                AnimatedBuilder(
+                  animation: _controller.view,
+                  builder: (context, child) {
+                    return Transform.rotate(
+                      angle: _controller.value *3, //hız
+                      child: child,
+                    );
+                  },
+                  child: Container(
+                      width: 200,
+                      height: 200,
+                      color: Colors.purple,
+                      child: Center(
+                        child: Text(
+                          "ALIŞVERİŞ SEPETİM",
+                          style: TextStyle(color: Colors.white, fontSize: 15),
+                        ),
+
+                      )),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -132,9 +172,7 @@ class loginPageState extends State<loginPage> {
                             new SnackBar(content: new Text("Giriş Yapıldı")));
                         return Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  mainPage()),
+                          MaterialPageRoute(builder: (context) => mainPage()),
                         );
                       });
                     }

@@ -2,16 +2,17 @@ import 'package:alisverissepeti/pages/hakkindaPage.dart';
 import 'package:flutter/material.dart' as material;
 import 'package:path_provider/path_provider.dart';
 import 'package:pdf/widgets.dart';
+import 'package:pdf/pdf.dart';
 import 'dart:io';
 
-orderPdfView(context, String hakkinda) async {
+orderPdfView(context,String hakkinda) async {
   final Document pdf = Document();
   pdf.addPage(Page(
       orientation: PageOrientation.natural,
       build: (context) => Column(
             children: [
-              Text("HAKKINDA", style: TextStyle(fontSize: 32)),
-              Text(hakkinda, style: TextStyle(fontSize: 32))
+              Text("HAKKINDA", style: TextStyle(fontSize: 36)),
+              Text("Bu uygulama Dr. Ogretim Üyesi Ahmet Cevahir CINAR tarafindan yürütülen 3301456 kodlu MOBIL PROGRAMLAMA dersi kapsaminda 183301021 numarali Melike Merve METIN tarafindan 9 Temmuz 2021 günü yapilmistir.", style: TextStyle(fontSize: 32)),
             ],
           )));
   final String dir = (await getApplicationDocumentsDirectory()).path;
@@ -24,5 +25,152 @@ orderPdfView(context, String hakkinda) async {
       builder: (_) => PdfViewer(path: path),
     ),
   );
-  print(path);
+  print("eklendi"+path);
 }
+
+/*import 'package:flutter/material.dart' as material;
+import 'package:path_provider/path_provider.dart';
+import 'package:pdf/pdf.dart';
+import 'package:pdf/widgets.dart';
+import 'dart:io';
+
+import '../main.dart';
+import 'hakkindaPage.dart';
+
+orderPdfView(context, String title) async {
+  final Document pdf = Document();
+  pdf.addPage(
+    Page(
+      orientation: PageOrientation.natural,
+      build: (context) => Column(
+        children: [
+          divider(500),
+          spaceDivider(5),
+          Text(
+            title,
+            style: TextStyle(fontSize: 40, color: PdfColors.grey),
+          ),
+          spaceDivider(5),
+          divider(500),
+          spaceDivider(60),
+          Row(
+            children: [
+              Text(
+                "Kadriye Macit",
+                textAlign: TextAlign.left,
+                style: textStyle1(),
+              ),
+            ],
+          ),
+          spaceDivider(30),
+          textRow(["Satici:", "Alici:"], textStyle1()),
+          textRow(["Market", "Kadriye Macit"], textStyle2()),
+          textRow(["Adres", "Adres"], textStyle2()),
+          textRow(["Adres", "Adres"], textStyle2()),
+          textRow(["Adres", "Adres"], textStyle2()),
+          spaceDivider(30),
+          Container(
+            color: PdfColors.white,
+            child: Table(
+              border: TableBorder.all(color: PdfColors.black),
+              children: [
+                tableRow(
+                    ["No.", "Ad", "Miktar", "Fiyat", "Toplam"], textStyle1()),
+                tableRow(["1", "Dondurma", "3", "20", "60"], textStyle2()),
+                tableRow(["2", "Jelibon", "20", "10", "200"], textStyle2()),
+                tableRow(["3", "Gofret", "2", "15", "30"], textStyle2()),
+              ],
+            ),
+          ),
+          spaceDivider(30),
+          divider(500),
+          spaceDivider(30),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Container(
+                width: 250,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    textRow(["Toplam Tutar", "290"], textStyle2()),
+                    textRow(["Indirim", "90"], textStyle2()),
+                    divider(500),
+                    textRow(["Genel Tutar", "200"], textStyle2()),
+                    divider(500),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    ),
+  );
+
+  final String dir = (await getApplicationDocumentsDirectory()).path;
+  final String path = '$dir/report.pdf';
+  final File file = File(path);
+  await file.writeAsBytes((await pdf.save()));
+  material.Navigator.of(context).push(
+    material.MaterialPageRoute(
+      builder: (_) => PdfViewer(path: path),
+    ),
+  );
+}
+
+Widget divider(double width) {
+  return Container(
+    height: 3,
+    width: width,
+    decoration: BoxDecoration(
+      color: PdfColors.grey,
+    ),
+  );
+}
+
+tableRow(List<String> attributes, TextStyle textStyle) {
+  return TableRow(
+    children: attributes
+        .map(
+          (e) => Text(
+        "  " + e,
+        style: textStyle,
+      ),
+    )
+        .toList(),
+  );
+}
+
+Widget textRow(List<String> titleList, TextStyle textStyle) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: titleList
+        .map(
+          (e) => Text(
+        e,
+        style: textStyle,
+      ),
+    )
+        .toList(),
+  );
+}
+
+TextStyle textStyle1() {
+  return TextStyle(
+    color: PdfColors.grey800,
+    fontSize: 22,
+    fontWeight: FontWeight.bold,
+  );
+}
+
+TextStyle textStyle2() {
+  return TextStyle(
+    color: PdfColors.grey,
+    fontSize: 22,
+  );
+}
+
+Widget spaceDivider(double height) {
+  return SizedBox(height: height);
+}*/

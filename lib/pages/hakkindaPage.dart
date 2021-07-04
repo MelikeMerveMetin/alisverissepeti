@@ -12,7 +12,7 @@ class hakkindaPageState extends State<hakkindaPage> {
   String hakkinda =
       "Bu uygulama Dr. Öğretim Üyesi Ahmet Cevahir ÇINAR tarafından yürütülen"
       " 3301456 kodlu MOBİL PROGRAMLAMA dersi kapsamında 183301021 numaralı Melike Merve METİN "
-      "tarafından 25 Haziran 2021 günü yapılmıştır.";
+      "tarafından 9 Temmuz 2021 günü yapılmıştır.";
 
   @override
   Widget build(BuildContext context) {
@@ -30,12 +30,12 @@ class hakkindaPageState extends State<hakkindaPage> {
                 hakkinda,
                 style: TextStyle(fontSize: 20),
               ),
-              RaisedButton(
+              MaterialButton(
                   elevation: 10,
                   color: Colors.purple,
                   child: Text("pdf"),
                   onPressed: () {
-                    orderPdfView(context, hakkinda);
+                    orderPdfView(context,hakkinda);
                   }),
             ],
           ),
