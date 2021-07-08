@@ -13,6 +13,7 @@ class detayPage extends StatefulWidget {
 }
 
 class _detayPageState extends State<detayPage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

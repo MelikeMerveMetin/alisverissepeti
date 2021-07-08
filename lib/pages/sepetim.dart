@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 
+
 class sepetim extends StatefulWidget {
   @override
   _sepetimState createState() => _sepetimState();
@@ -22,10 +23,7 @@ class _sepetimState extends State<sepetim> {
         backgroundColor: Colors.purple,
         title: Text("SEPETİM"),
       ),
-      body:
-      Column(
-        children: [
-    ]  ),
+      body: Text(""),
      drawer: Drawer(
           child: ListView(
         padding: EdgeInsets.fromLTRB(20, 40, 20, 15),

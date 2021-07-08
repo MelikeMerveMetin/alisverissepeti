@@ -84,9 +84,10 @@ class loginPageState extends State<loginPage>
                     focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.purple)),
                     labelText: "Parola",
-                    prefixIcon: Icon(Icons.vpn_key_rounded, color: Colors.black),
+                    prefixIcon: Icon(
+                        Icons.vpn_key_rounded, color: Colors.black),
                     suffixIcon: InkWell(
-                        //ıcona tıklama özelliği veriyor
+                      //ıcona tıklama özelliği veriyor
                         onTap: () {
                           if (sifreGorunurluk == true) {
                             setState(() {
@@ -114,26 +115,27 @@ class loginPageState extends State<loginPage>
                     parola = value;
                   },
                 ),
-                SizedBox(height: 10.0),
+                SizedBox(height: 20.0),
                 buildButton(),
                 kayitButton(context),
                 buildHakkinda(context),
+                SizedBox(height: 18.0),
                 AnimatedBuilder(
                   animation: _controller.view,
                   builder: (context, child) {
                     return Transform.rotate(
-                      angle: _controller.value *3, //hız
+                      angle: _controller.value * 3, //hız
                       child: child,
                     );
                   },
                   child: Container(
-                      width: 200,
-                      height: 200,
-                      color: Colors.purple,
+                      width: 130,
+                      height: 130,
+                      color: Colors.white,
                       child: Center(
-                        child: Text(
-                          "ALIŞVERİŞ SEPETİM",
-                          style: TextStyle(color: Colors.white, fontSize: 15),
+
+                        child: Image(
+                            image: AssetImage("assets/images/sepet.jpg")
                         ),
 
                       )),
@@ -146,7 +148,8 @@ class loginPageState extends State<loginPage>
     );
   }
 
-  Widget buildButton() => Padding(
+  Widget buildButton() =>
+      Padding(
         padding: const EdgeInsets.all(10.0),
         child: SizedBox(
           width: 180,
@@ -156,27 +159,24 @@ class loginPageState extends State<loginPage>
             onPressed: () {}, //renk verebilmek için tıklama özelliği verdim
             child: Container(
               child: GestureDetector(
-                  child: Text(
-                    "GİRİŞ YAP",
-                    style: TextStyle(color: Colors.white, fontSize: 18),
-                  ),
-                  onTap: () {
-                    ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
-                        content: new Text("Giriş Yapmak İçin Çift Tıklayın.")));
-                  },
-                  onDoubleTap: () {
-                    if (_formKey.currentState.validate()) {
-                      _formKey.currentState.save();
-                      _auth.signIn(kullanici_maili, parola).then((user) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            new SnackBar(content: new Text("Giriş Yapıldı")));
-                        return Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => mainPage()),
-                        );
-                      });
-                    }
-                  }),
+                child: Text(
+                  "GİRİŞ YAP",
+                  style: TextStyle(color: Colors.white, fontSize: 18),
+                ),
+                onTap: () {
+                  if (_formKey.currentState.validate()) {
+                    _formKey.currentState.save();
+                    _auth.signIn(kullanici_maili, parola).then((user) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          new SnackBar(content: new Text("Giriş Yapıldı")));
+                      return Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => mainPage()),
+                      );
+                    });
+                  }
+                },
+              ),
             ),
           ),
         ),
