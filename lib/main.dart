@@ -54,9 +54,9 @@ class MyApp extends StatelessWidget {
         "/kayitPage": (context) => kayitPage(),
         "/detayPage": (context) => detayPage(),
         "/calisan_view": (context) => CalisanView(),
-        "/mainPage":(context)=>mainPage(),
-        "/notPage":(context)=>notPage(),
-        "/LineChart":(context)=>LineChartSample(),
+        "/mainPage": (context) => mainPage(),
+        "/notPage": (context) => notPage(),
+        "/LineChartSample": (context) => LineChartSample(),
       },
     );
   }
